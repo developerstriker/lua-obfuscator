@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fxbuild - FiveM Resource Builder & Obfuscator</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        h1 { color: #333; }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 5px; }
+        .example { background: #e8f4f8; padding: 10px; border-radius: 5px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>fxbuild</h1>
+    <p>FiveM Resource Builder + Obfuscator - Um comando para buildar e ofuscar seus recursos FiveM.</p>
+    
+    <h2>Uso</h2>
+    <pre>curl -sL https://developerstriker.github.io/lua-obfuscator/install.sh | bash -s -- recurso/fxmanifest.lua --preset Weak</pre>
+    
+    <h2>Exemplos</h2>
+    <div class="example">
+        <strong>Minify (sem ofuscação):</strong><br>
+        <pre>curl -sL https://developerstriker.github.io/lua-obfuscator/install.sh | bash -s -- fxmanifest.lua --preset Minify</pre>
+    </div>
+    <div class="example">
+        <strong>Ofuscação fraca:</strong><br>
+        <pre>curl -sL https://developerstriker.github.io/lua-obfuscator/install.sh | bash -s -- fxmanifest.lua --preset Weak</pre>
+    </div>
+    <div class="example">
+        <strong>Ofuscação média:</strong><br>
+        <pre>curl -sL https://developerstriker.github.io/lua-obfuscator/install.sh | bash -s -- fxmanifest.lua --preset Medium</pre>
+    </div>
+    <div class="example">
+        <strong>Ofuscação forte:</strong><br>
+        <pre>curl -sL https://developerstriker.github.io/lua-obfuscator/install.sh | bash -s -- fxmanifest.lua --preset Strong</pre>
+    </div>
+    
+    <h2>Presets disponíveis</h2>
+    <ul>
+        <li><strong>Minify</strong> - Apenas minifica (sem ofuscação)</li>
+        <li><strong>Weak</strong> - Ofuscação leve</li>
+        <li><strong>Medium</strong> - Ofuscação média</li>
+        <li><strong>Strong</strong> - Ofuscação forte</li>
+    </ul>
+</body>
+</html>
