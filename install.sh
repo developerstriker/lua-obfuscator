@@ -1,4 +1,5 @@
 #!/bin/bash
+# v1.0.1 - fix prometheus clone
 
 set -e
 
