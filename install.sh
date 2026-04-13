@@ -1,5 +1,5 @@
 #!/bin/bash
-# v1.0.1 - fix prometheus clone
+# v1.0.2 - standalone install
 
 set -e
 
@@ -9,7 +9,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 BASE_URL="https://raw.githubusercontent.com/developerstriker/lua-obfuscator/master"
-INSTALL_DIR="/tmp/fxbuild-install"
+INSTALL_DIR="/tmp/fxbuild-run"
 
 usage() {
     echo "Usage: curl -sL $BASE_URL/install.sh | bash -s -- <fxmanifest.lua> [options]"
@@ -51,19 +51,18 @@ FXMANIFEST=$(realpath "$FXMANIFEST")
 
 echo -e "${YELLOW}Installing fxbuild...${NC}"
 rm -rf "$INSTALL_DIR"
-mkdir -p "$INSTALL_DIR/src"
+mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
-echo "Downloading fxbuild.sh..."
+echo "Downloading files..."
 curl -sL "$BASE_URL/fxbuild.sh" -o fxbuild.sh
 chmod +x fxbuild.sh
 
-echo "Downloading src/fxbuild.lua..."
 curl -sL "$BASE_URL/src/fxbuild.lua" -o src/fxbuild.lua
 
-echo "Downloading prometheus obfuscator..."
+echo "Downloading prometheus..."
 git clone --depth 1 https://github.com/prometheus-lua/Prometheus.git prometheus
-ls -la prometheus/
 
 echo -e "${GREEN}Running obfuscation...${NC}"
+cd "$INSTALL_DIR"
 ./fxbuild.sh "$FXMANIFEST" --preset "$PRESET"
