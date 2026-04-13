@@ -62,6 +62,7 @@ curl -sL "$BASE_URL/src/fxbuild.lua" -o src/fxbuild.lua
 
 echo "Downloading prometheus obfuscator..."
 git clone --depth 1 https://github.com/prometheus-lua/Prometheus.git prometheus
+ls -la prometheus/
 
 echo -e "${GREEN}Running obfuscation...${NC}"
 ./fxbuild.sh "$FXMANIFEST" --preset "$PRESET"
