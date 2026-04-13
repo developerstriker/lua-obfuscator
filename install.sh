@@ -1,5 +1,5 @@
 #!/bin/bash
-# v1.2.0 - Use GitHub API to avoid cache
+# v1.3.0 - FINAL with API - no cache
 
 set -e
 
