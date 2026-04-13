@@ -60,10 +60,10 @@ chmod +x fxbuild.sh
 echo "Downloading src/fxbuild.lua..."
 curl -sL "$BASE_URL/src/fxbuild.lua" -o src/fxbuild.lua
 
-echo "Downloading prometheus..."
-curl -sL "https://github.com/developerstriker/lua-obfuscator/archive/refs/heads/master.tar.gz" -o prometheus.tar.gz
-mkdir -p prometheus
-tar -xzf prometheus.tar.gz -C prometheus --strip-components=1
+echo "Downloading prometheus submodule..."
+git clone --depth 1 https://github.com/developerstriker/lua-obfuscator.git tmp_prometheus
+mv tmp_prometheus/prometheus .
+rm -rf tmp_prometheus
 
 echo -e "${GREEN}Running obfuscation...${NC}"
 ./fxbuild.sh "$FXMANIFEST" --preset "$PRESET"
