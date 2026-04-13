@@ -1,5 +1,5 @@
 #!/bin/bash
-# v1.0.2 - standalone install
+# v1.1.1 - Raw GitHub with cache bust
 
 set -e
 
@@ -8,17 +8,17 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-BASE_URL="https://raw.githubusercontent.com/developerstriker/lua-obfuscator/master"
+RAW_URL="https://raw.githubusercontent.com/developerstriker/lua-obfuscator"
 INSTALL_DIR="/tmp/fxbuild-run"
 
 usage() {
-    echo "Usage: curl -sL $BASE_URL/install.sh | bash -s -- <fxmanifest.lua> [options]"
+    echo "Usage: curl -sL $RAW_URL/install.sh | bash -s -- <fxmanifest.lua> [options]"
     echo ""
     echo "Options:"
     echo "  --preset <name>    Obfuscation preset (Minify, Weak, Medium, Strong)"
     echo ""
     echo "Example:"
-    echo "  curl -sL $BASE_URL/install.sh | bash -s -- myresource/fxmanifest.lua --preset Weak"
+    echo "  curl -sL $RAW_URL/install.sh | bash -s -- myresource/fxmanifest.lua --preset Weak"
     exit 1
 }
 
@@ -54,11 +54,12 @@ rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
-echo "Downloading files..."
-curl -sL "$BASE_URL/fxbuild.sh" -o fxbuild.sh
+echo "Downloading fxbuild.sh..."
+curl -sL "$RAW_URL/master/fxbuild.sh" -o fxbuild.sh
 chmod +x fxbuild.sh
 
-curl -sL "$BASE_URL/src/fxbuild.lua" -o src/fxbuild.lua
+echo "Downloading src/fxbuild.lua..."
+curl -sL "$RAW_URL/master/src/fxbuild.lua" -o src/fxbuild.lua
 
 echo "Downloading prometheus..."
 git clone --depth 1 https://github.com/prometheus-lua/Prometheus.git prometheus
