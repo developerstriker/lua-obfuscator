@@ -6,7 +6,7 @@ set -e
 INSTALL_DIR="/tmp/fxbuild-run"
 API="https://api.github.com/repos/developerstriker/lua-obfuscator/contents"
 
-decode() { python -c "import sys,json; import base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"; }
+decode() { py -c "import sys,json; import base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"; }
 
 usage() {
     echo "Usage: curl -sL https://raw.githubusercontent.com/developerstriker/lua-obfuscator/master/install.sh | bash -s -- <fxmanifest> [opts]"
